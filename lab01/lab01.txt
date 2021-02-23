@@ -1,0 +1,40 @@
+ZADANIE 2:
+    docker pull hello-world
+    docker run hello-world
+
+ZADANIE 3:
+    docker run hello-world              #Tworzy nowy kontener i wykonuje proces
+    docker start e7658e122b50           #Uruchamia wcześniej utworzony kontener
+    docker start -a e7658e122b50        #Uruchamia wcześniej utworzony kontener i wypisuje jego wynik
+
+ZADANIE 4:
+    docker rm e7658e122b50              #Usuwa podany kontener
+    docker system prune                 #Usuwa wszystkie kontenery
+
+ZADANIE 5:
+    docker pull busybox
+    docker run busybox echo "hello world! I'm busybox!"
+
+ZADANIE 6:
+    docker run -it busybox
+    ls -la
+    exit
+    docker logs 71fd7f9133a0
+
+ZADANIE 7:
+    docker start 71fd7f9133a0
+    docker exec -it 71fd7f9133a0 sh
+
+ZADANIE 8:
+    docker exec -it 71fd7f9133a0 sh
+    echo "My first file" > readme.txt
+    docker run busybox
+
+    #Plik nie będzie istniał w nowo utworzonym kontenerze ponieważ działamy no osobnej kopii obrazu
+
+ZADANIE 9:
+    docker exec -it 71fd7f9133a0 echo 'Created from outside' > createdFile.txt
+
+ZADANIE 10:
+    docker create -it --name=my_container busybox echo "Hello world from my container"
+    docker start -a my_container
