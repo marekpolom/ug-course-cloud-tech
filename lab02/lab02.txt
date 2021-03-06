@@ -1,0 +1,20 @@
+ZADANIE 1:
+    docker run -it -d -p 4200:80 --name nginx nginx
+
+    -d - odpala kontener w tle
+    -p - przydziela port do kontenera
+
+ZADANIE 2:
+    docker build -t busybox-zad2 .
+    docker run -it busybox-zad2
+
+ZADANIE 3:
+    docker build -t nginx-zad3 . 
+    docker run -it -p 4200:80 nginx-zad3
+
+ZADANIE 4:
+    docker build -t node-zad4 .
+    docker run -p 4200:8080  node-zad4
+
+ZADANIE 6:
+    docker run -it --rm -v ${PWD}:/app -v /app/node_modules -p 3100:3000 -e CHOKIDAR_USEPOLLING=true react-app
