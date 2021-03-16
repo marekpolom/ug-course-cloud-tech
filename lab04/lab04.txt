@@ -1,0 +1,17 @@
+ZADANIE 1:
+    docker run -it --name first nginx
+    docker container inspect first
+
+ZADANIE 2:
+    docker network create firstNetwork
+    docker run -it --name second nginx
+    docker network connect firstNetwork second
+    docker network inspect firstNetwork
+
+ZADANIE 3:
+    docker network connect firstNetwork first
+    docker network inspect firstNetwork
+    docker network disconnect bridge first
+
+ZADANIE 4:
+    docker system prune
