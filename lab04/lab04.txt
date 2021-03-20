@@ -22,4 +22,9 @@ ZADANIE 5:
     CREATE DATABASE lab04;
     CREATE TABLE test (id serial, name text, last_name text);
     INSERT INTO test (name, last_name) VALUES ('Marek', 'Polom');
-    
+
+ZADANIE 6:
+    docker run --name redis-lab04 -d redis
+    docker network create testNetwork
+    docker network connect testNetwork redis-lab04
+    docker network connect testNetwork postgres
