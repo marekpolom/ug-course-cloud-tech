@@ -15,3 +15,11 @@ ZADANIE 3:
 
 ZADANIE 4:
     docker system prune
+
+ZADANIE 5:
+    docker run --name postgres-lab04 -e POSTGRES_PASSWORD=tajne -d -p 5432:5432 -e PGDATA=/var/lib/postgresql/data/pgdata -v F:/postgresql/data:/var/lib/postgresql/data postgres
+    psql postgres postgres
+    CREATE DATABASE lab04;
+    CREATE TABLE test (id serial, name text, last_name text);
+    INSERT INTO test (name, last_name) VALUES ('Marek', 'Polom');
+    
