@@ -1,0 +1,6 @@
+ZADANIE 1:
+
+    docker-compose up - tworzy i startuje kontenery
+    docker-compose up -d - startuje kontenery w tle
+    docker-compose stop - zatrzymuje kontenery
+    docker-compose down --volumes - zatrzymuje i usuwa kontenery i sieci, opcja --volumes pozwala usunąć volumeny przypisane do kontenerów
