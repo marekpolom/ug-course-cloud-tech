@@ -21,7 +21,7 @@ require('dotenv').config();
 const dbConnData = {
     host: process.env.MONGO_HOST || '127.0.0.1',
     port: process.env.MONGO_PORT || 27017,
-    database: process.env.MONGO_DATABASE || 'projekt'
+    database: process.env.MONGO_DATABASE || 'local'
 };
 // Łączymy się z bazą i „stawiamy” serwer API
 // Do kontaktu z serwerem MongoDB wykorzystamy bibliotekę Mongoose
