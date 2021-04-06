@@ -1,11 +1,24 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
+    container_name: redis-server
+    ports:
+      - '6379:6379'
+
   api:
     build:
       dockerfile: Dockerfile
       context: ./backend
+    container_name: node-api
     environment:
+      - REDIS_URL=redis
+      - REDIS_PORT=6379
       - PGPORT=5000
     ports:
-      - "5000:5000"
+      - '5000:5000'
+    depends_on:
+      - redis
+    links:
+      - redis
