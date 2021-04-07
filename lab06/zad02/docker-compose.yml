@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    container_name: frontend
+    environment:
+      - CHOKIDAR_USEPOLLING="true"
+    volumes:
+      - /app/node_modules
+      - F:/Marek/ug/technologie-chmurowe/lab06/zad02/frontend:/app
+    ports:
+      - '3000'
+
+  nginx:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3000:80'
