@@ -1,0 +1,5 @@
+kubectl apply -f .\zad01.yaml
+    Utworzenie poda z kontenerem nginx
+
+kubectl exec --stdin --tty zad01 -- curl localhost:80
+    Pobranie pliku index.html poprzez wykonanie komendy w podzie
