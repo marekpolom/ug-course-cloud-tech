@@ -1,0 +1,2 @@
+NodePort - wystawia usługę na zewnątrz pod podany port statyczny
+ClusterIP - usługa dostępna tylko z wewnątrz klastra
