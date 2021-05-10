@@ -15,4 +15,4 @@ spec:
     spec:
      containers:
      - name: react
-       image: react:release0
+       image: react:release1
