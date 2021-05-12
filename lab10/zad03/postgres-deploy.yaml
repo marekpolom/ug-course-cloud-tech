@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: postgres-volume
           hostPath:
-            path: data
+            path: /run/desktop/mnt/host/f/Marek/ug/technologie-chmurowe/lab10/zad03/data
             type: DirectoryOrCreate
            
   replicas: 1
