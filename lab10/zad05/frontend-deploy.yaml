@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+
+  replicas: 1
+  template: 
+    metadata:
+      labels: 
+        tier: frontend
+    spec:
+      containers:
+      - name: front
+        image: front:release6
+        volumeMounts:
+          - name: config
+            mountPath: "/var/www/html/build/config.js"
+            subPath: "config.js"
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - name: config
+          configMap:
+              name: frontend-config
+              items:
+                  - key: "web.properties"
+                    path: "config.js"
