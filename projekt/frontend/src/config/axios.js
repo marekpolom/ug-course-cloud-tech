@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const defaultAxios = axios.create({
-  baseURL: 'http://localhost:5000/calculate',
+  baseURL: 'http://localhost/api/calculate',
 });
