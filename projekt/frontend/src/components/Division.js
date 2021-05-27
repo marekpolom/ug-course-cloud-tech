@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Formik, Field, Form } from "formik";
 import {division, getHistory} from '../requests/requests';
 
-const Division = ({setHistory}) => {
+const Division = ({setHistory, setCalcRes}) => {
   return (
     <div className="cont">
       <h3>DIVISION</h3>
       <Formik
         initialValues={{ a: "", b: "" }}
         onSubmit={async (values) => {
-          await division(values.a, values.b);
+          setCalcRes(await division(values.a, values.b));
           setHistory(await getHistory());
         }}
       >

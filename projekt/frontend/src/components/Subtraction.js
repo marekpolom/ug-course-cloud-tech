@@ -2,14 +2,14 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import {subtraction, getHistory} from '../requests/requests';
 
-const Subtraction = ({setHistory}) => {
+const Subtraction = ({setHistory, setCalcRes}) => {
   return (
     <div className="cont">
       <h3>SUBTRACTION</h3>
       <Formik
         initialValues={{ a: "", b: "" }}
         onSubmit={async (values) => {
-            await subtraction(values.a, values.b);
+          setCalcRes(await subtraction(values.a, values.b));
             setHistory(await getHistory());
         }}
       >
