@@ -68,4 +68,60 @@ router.post("/sub", async (req, res) => {
   }
 });
 
+router.post("/mult", async (req, res) => {
+  const num_1 = req.body.a;
+  const num_2 = req.body.b;
+
+  const redisRes = await client.get(`mult:${num_1}:${num_2}`);
+
+  if (redisRes) {
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+  } else {
+    const result = parseFloat(num_1) * parseFloat(num_2);
+
+    const data = {
+      type: "MULT",
+      num_1: num_1,
+      num_2: num_2,
+      result: result,
+    };
+
+    await client.set(`mult:${num_1}:${num_2}`, result);
+
+    await History.insertMany(data, (err, result) => {
+      console.log("1 document inserted");
+    });
+
+    return res.send({ result: { a: num_1, b: num_2, result: result } });
+  }
+});
+
+router.post("/div", async (req, res) => {
+  const num_1 = req.body.a;
+  const num_2 = req.body.b;
+
+  const redisRes = await client.get(`div:${num_1}:${num_2}`);
+
+  if (redisRes) {
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+  } else {
+    const result = parseFloat(num_1) / parseFloat(num_2);
+
+    const data = {
+      type: "DIV",
+      num_1: num_1,
+      num_2: num_2,
+      result: result,
+    };
+
+    await client.set(`div:${num_1}:${num_2}`, result);
+
+    await History.insertMany(data, (err, result) => {
+      console.log("1 document inserted");
+    });
+
+    return res.send({ result: { a: num_1, b: num_2, result: result } });
+  }
+});
+
 module.exports = router;
