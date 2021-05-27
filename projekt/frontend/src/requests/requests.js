@@ -6,14 +6,13 @@ const addition = async (a, b) => {
             a: a,
             b: b
         }).then(result => {
-            console.log(result.data.result);
             resolve(result.data.result);
         }).catch(e => {
             console.log(e);
             reject();
         })
     });
-}
+};
 
 const subtraction = async (a, b) => {
     return new Promise((resolve, reject) => {
@@ -21,14 +20,13 @@ const subtraction = async (a, b) => {
             a: a,
             b: b
         }).then(result => {
-            console.log(result.data.result);
             resolve(result.data.result);
         }).catch(e => {
             console.log(e);
             reject();
         })
     });
-}
+};
 
 const multiplication = async (a, b) => {
     return new Promise((resolve, reject) => {
@@ -36,14 +34,13 @@ const multiplication = async (a, b) => {
             a: a,
             b: b
         }).then(result => {
-            console.log(result.data.result);
             resolve(result.data.result);
         }).catch(e => {
             console.log(e);
             reject();
         })
     });
-}
+};
 
 const division = async (a, b) => {
     return new Promise((resolve, reject) => {
@@ -51,14 +48,29 @@ const division = async (a, b) => {
             a: a,
             b: b
         }).then(result => {
-            console.log(result.data.result);
             resolve(result.data.result);
         }).catch(e => {
             console.log(e);
             reject();
         })
     });
-}
+};
+
+const deleteCalc = async (id, type, a, b) => {
+    return new Promise((resolve, reject) => {
+        defaultAxios.delete('/delete', {params: {
+            id: id,
+            type: type,
+            a: a,
+            b: b
+        }}).then(result => {
+            resolve(result.data.result);
+        }).catch(e => {
+            console.log(e);
+            reject();
+        })
+    });
+};
 
 const getHistory = async () => {
     return new Promise((resolve, reject) => {
@@ -70,6 +82,6 @@ const getHistory = async () => {
             reject();
         })
     });
-}
+};
 
-export {addition, subtraction, multiplication, division, getHistory};
+export {addition, subtraction, multiplication, division, deleteCalc, getHistory};

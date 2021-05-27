@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {getHistory} from '../requests/requests';
+import {getHistory, deleteCalc} from '../requests/requests';
 
 const History = ({history, setHistory}) => {
   useEffect(() => {
@@ -15,7 +15,7 @@ const History = ({history, setHistory}) => {
     <div className="hist-cont">
       <h2>CALCULATION HISTORY</h2>
 
-      {history.map((item, i) => {
+      {history.map(item => {
         let op = '';
 
         switch (item.type) {
@@ -36,8 +36,12 @@ const History = ({history, setHistory}) => {
         };
 
         return(
-          <div key={i}>
+          <div key={item._id} className={'history-item-cont'}>
             <p>{item.num_1}{'\u00A0'}{op}{'\u00A0'}{item.num_2}{'\u00A0'}={'\u00A0'}{item.result}</p>
+            <button className={'history-item-delete-btn'} onClick={async () => {
+              await deleteCalc(item._id, item.type, item.num_1, item.num_2);
+              setHistory(await getHistory());
+            }}>Delete</button>
           </div>
         );
       })}

@@ -11,10 +11,6 @@ function App() {
   const [history, setHistory] = useState([]);
   const [calcRes, setCalcRes] = useState('');
 
-  useEffect(() => {
-    console.log(history);
-  }, [history]);
-
   return (
     <div className="App">
       <h1>SIMPLE CALCULATOR</h1>
