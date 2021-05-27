@@ -19,7 +19,7 @@ router.post("/add", async (req, res) => {
   const redisRes = await client.get(`add:${num_1}:${num_2}`);
 
   if (redisRes) {
-    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes, type: 'ADD' } });
   } else {
     const result = parseFloat(num_1) + parseFloat(num_2);
 
@@ -36,7 +36,7 @@ router.post("/add", async (req, res) => {
       console.log("1 document inserted");
     });
 
-    return res.send({ result: { a: num_1, b: num_2, result: result } });
+    return res.send({ result: { a: num_1, b: num_2, result: result, type: 'ADD' } });
   }
 });
 
@@ -47,7 +47,7 @@ router.post("/sub", async (req, res) => {
   const redisRes = await client.get(`sub:${num_1}:${num_2}`);
 
   if (redisRes) {
-    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes, type: 'SUB' } });
   } else {
     const result = parseFloat(num_1) - parseFloat(num_2);
 
@@ -64,7 +64,7 @@ router.post("/sub", async (req, res) => {
       console.log("1 document inserted");
     });
 
-    return res.send({ result: { a: num_1, b: num_2, result: result } });
+    return res.send({ result: { a: num_1, b: num_2, result: result, type: 'SUB' } });
   }
 });
 
@@ -75,7 +75,7 @@ router.post("/mult", async (req, res) => {
   const redisRes = await client.get(`mult:${num_1}:${num_2}`);
 
   if (redisRes) {
-    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes, type: 'MULT' } });
   } else {
     const result = parseFloat(num_1) * parseFloat(num_2);
 
@@ -92,7 +92,7 @@ router.post("/mult", async (req, res) => {
       console.log("1 document inserted");
     });
 
-    return res.send({ result: { a: num_1, b: num_2, result: result } });
+    return res.send({ result: { a: num_1, b: num_2, result: result, type: 'MULT'  } });
   }
 });
 
@@ -103,7 +103,7 @@ router.post("/div", async (req, res) => {
   const redisRes = await client.get(`div:${num_1}:${num_2}`);
 
   if (redisRes) {
-    return res.send({ result: { a: num_1, b: num_2, result: redisRes } });
+    return res.send({ result: { a: num_1, b: num_2, result: redisRes, type: 'DIV'  } });
   } else {
     const result = parseFloat(num_1) / parseFloat(num_2);
 
@@ -120,7 +120,7 @@ router.post("/div", async (req, res) => {
       console.log("1 document inserted");
     });
 
-    return res.send({ result: { a: num_1, b: num_2, result: result } });
+    return res.send({ result: { a: num_1, b: num_2, result: result, type: 'DIV'  } });
   }
 });
 
