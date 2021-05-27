@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const defaultAxios = axios.create({
-  baseURL: 'http://localhost/api/calculate',
+  baseURL: process.env.REACT_APP_API || 'http://localhost/api/calculate',
 });

@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
+import {getHistory} from '../requests/requests';
 
-const History = ({history}) => {
+const History = ({history, setHistory}) => {
+  useEffect(() => {
+    const fetchHistory = async () => {
+      const hist = await getHistory();
+      setHistory(hist);
+    }
+
+    fetchHistory();
+  }, []);
+
   return (
     <div className="hist-cont">
       <h2>CALCULATION HISTORY</h2>
@@ -14,6 +24,12 @@ const History = ({history}) => {
             break;
           case 'SUB':
             op = '-';
+            break;
+          case 'MULT':
+            op = '*';
+            break;
+          case 'DIV':
+            op = '/';
             break;
           default:
             op = '';

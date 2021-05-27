@@ -30,6 +30,36 @@ const subtraction = async (a, b) => {
     });
 }
 
+const multiplication = async (a, b) => {
+    return new Promise((resolve, reject) => {
+        defaultAxios.post('/mult', {
+            a: a,
+            b: b
+        }).then(result => {
+            console.log(result.data.result);
+            resolve(result.data.result);
+        }).catch(e => {
+            console.log(e);
+            reject();
+        })
+    });
+}
+
+const division = async (a, b) => {
+    return new Promise((resolve, reject) => {
+        defaultAxios.post('/div', {
+            a: a,
+            b: b
+        }).then(result => {
+            console.log(result.data.result);
+            resolve(result.data.result);
+        }).catch(e => {
+            console.log(e);
+            reject();
+        })
+    });
+}
+
 const getHistory = async () => {
     return new Promise((resolve, reject) => {
         defaultAxios.get('/hist')
@@ -42,4 +72,4 @@ const getHistory = async () => {
     });
 }
 
-export {addition, subtraction, getHistory};
+export {addition, subtraction, multiplication, division, getHistory};
