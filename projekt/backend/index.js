@@ -19,13 +19,6 @@ const dbConnData = {
 
 const mongoose = require("mongoose");
 
-console.log(process.env.MONGO_HOST);
-console.log(process.env.MONGO_PORT);
-console.log(process.env.MONGO_DATABASE);
-console.log(process.env.REDIS_PORT);
-console.log(process.env.REDIS_HOST);
-console.log(process.env.PORT);
-
 client.on("error", (err) => {
   console.error("Error connecting to Redis", err);
 });
