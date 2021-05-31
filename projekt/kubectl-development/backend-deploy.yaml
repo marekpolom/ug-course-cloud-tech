@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  namespace: development
+  name: backend
+
+spec:
+  selector:
+    matchLabels:
+      tier: backend
+
+  replicas: 2
+  template: 
+    metadata:
+      labels: 
+        tier: backend
+    spec:
+     containers:
+     - name: backend
+       image: back:dev-0.4
+       env: 
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: PORT
+          - name: MONGO_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: MONGOHOST
+          - name: MONGO_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: MONGOPORT
+          - name: MONGO_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: MONGODB
+          - name: REDIS_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: REDISPORT
+          - name: REDIS_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: REDISHOST
