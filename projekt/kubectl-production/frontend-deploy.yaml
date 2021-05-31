@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  namespace: production
+  name: frontend
+
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+
+  replicas: 1
+  template: 
+    metadata:
+      labels: 
+        tier: frontend
+    spec:
+      containers:
+      - name: front
+        image: front:dev-0.1
