@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: production
-  name: mongo-pvc
+  name: mongo-production-pvc
 
 spec:
   storageClassName: manual
@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Mi
+      storage: 80Mi
