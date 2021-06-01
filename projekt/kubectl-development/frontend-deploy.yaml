@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
       - name: front
-        image: front:dev-0.4
+        image: mpolom/front:dev-0.1

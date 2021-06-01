@@ -23,11 +23,10 @@ spec:
           volumeMounts:
             - mountPath: /data/db
               name: mongodb-volume
-              subPath: mongo
       volumes:
         - name: mongodb-volume
           persistentVolumeClaim:
-            claimName: mongo-pvc
+            claimName: mongo-development-pvc
            
   replicas: 1
   selector:
