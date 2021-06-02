@@ -18,3 +18,15 @@ spec:
       containers:
       - name: front
         image: mpolom/front:prod-1.0
+        volumeMounts:
+          - name: config
+            mountPath: "/var/www/html/build/config.js"
+            subPath: "config.js"
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - name: config
+          configMap:
+              name: frontend-config
+              items:
+                  - key: "web.properties"
+                    path: "config.js"
