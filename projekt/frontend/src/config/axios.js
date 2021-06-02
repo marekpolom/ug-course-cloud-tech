@@ -1,5 +1,6 @@
 import axios from "axios";
+import Config from "./config"
 
 export const defaultAxios = axios.create({
-  baseURL: process.env.REACT_APP_API || 'http://localhost/api/calculate',
+  baseURL: Config.api_host,
 });

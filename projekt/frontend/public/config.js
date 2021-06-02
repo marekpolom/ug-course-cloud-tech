@@ -1,0 +1,1 @@
+window.API_HOST = "localhost:5000/calculate"
