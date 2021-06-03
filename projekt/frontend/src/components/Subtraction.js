@@ -10,7 +10,7 @@ const Subtraction = ({setHistory, setCalcRes}) => {
         initialValues={{ a: "", b: "" }}
         onSubmit={async (values) => {
           setCalcRes(await subtraction(values.a, values.b));
-            setHistory(await getHistory());
+          setHistory(await getHistory());
         }}
       >
         <Form className="form-cont">

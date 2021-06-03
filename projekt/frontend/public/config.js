@@ -1,1 +1,1 @@
-window.API_HOST = "localhost:5000/calculate"
+window.API_HOST = "http://localhost:5000"
