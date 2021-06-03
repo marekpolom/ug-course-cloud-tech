@@ -17,7 +17,7 @@ spec:
     spec:
      containers:
      - name: backend
-       image: mpolom/back:dev-0.1
+       image: mpolom/backend:dev-0.1
        env: 
           - name: PORT
             valueFrom:

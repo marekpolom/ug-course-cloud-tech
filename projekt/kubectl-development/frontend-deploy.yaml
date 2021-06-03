@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
       - name: front
-        image: mpolom/front:dev-0.1
+        image: mpolom/frontend:dev-0.1
         volumeMounts:
           - name: config
-            mountPath: "/var/www/html/build/config.js"
+            mountPath: "/usr/share/nginx/html/config.js"
             subPath: "config.js"
       terminationGracePeriodSeconds: 10
       volumes:

@@ -14,14 +14,14 @@ spec:
   rules:
     - http: 
         paths:
-          - path: "development/api/?(.*)"
+          - path: "/development/api/?(.*)"
             pathType: Prefix
             backend:
               service:
                 name: backend-service
                 port: 
                   number: 5000
-          - path: "development/?(.*)"
+          - path: "/development/?(.*)"
             pathType: Prefix
             backend:
               service:
