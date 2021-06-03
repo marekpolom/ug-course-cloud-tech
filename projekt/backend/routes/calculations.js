@@ -34,7 +34,7 @@ router.post("/add", async (req, res) => {
     await client.expire(`add:${num_1}:${num_2}`, 60);
 
     await History.insertMany(data, (err, result) => {
-      console.log("1 document inserted");
+
     });
 
     return res.status(200).send({ result: { a: num_1, b: num_2, result: result, type: 'ADD' } });
@@ -63,7 +63,7 @@ router.post("/sub", async (req, res) => {
     await client.expire(`sub:${num_1}:${num_2}`, 60);
 
     await History.insertMany(data, (err, result) => {
-      console.log("1 document inserted");
+   
     });
 
     return res.status(200).send({ result: { a: num_1, b: num_2, result: result, type: 'SUB' } });
@@ -92,7 +92,7 @@ router.post("/mult", async (req, res) => {
     await client.expire(`mult:${num_1}:${num_2}`, 60);
 
     await History.insertMany(data, (err, result) => {
-      console.log("1 document inserted");
+    
     });
 
     return res.status(200).send({ result: { a: num_1, b: num_2, result: result, type: 'MULT'  } });
@@ -121,7 +121,7 @@ router.post("/div", async (req, res) => {
     await client.expire(`div:${num_1}:${num_2}`, 60);
 
     await History.insertMany(data, (err, result) => {
-      console.log("1 document inserted");
+    
     });
 
     return res.status(200).send({ result: { a: num_1, b: num_2, result: result, type: 'DIV'  } });
