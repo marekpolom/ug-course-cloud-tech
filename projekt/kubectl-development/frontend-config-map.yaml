@@ -6,4 +6,4 @@ metadata:
 
 data:
   web.properties: |
-        window.API_HOST= "localhost:80/development/api"
+        window.API_HOST= "http://localhost:80/development/api"
