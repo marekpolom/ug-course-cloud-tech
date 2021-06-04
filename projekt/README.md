@@ -32,9 +32,17 @@ kubectl apply -f .
 ```
 ### Wersji frontendowej odpowiada ten sam numer co wersji backendowej.
 ---
-### Aby przywrócić poprzednią wersję aplikacji należy, dla deploya Frontendu oraz Backendu, wykonać komendę:
+### Aby wyświetlić historię zmian deploya należy wykonać:
 ```console
+kubectl rollout history deployment [nazwa] --namespace development
 ```
+### Gdzie ```[nazwa]``` to ```frontend``` lub ```backend``` w zależności od tego, którą historie wersji chcemy wyświetlić.
+---
+### Aby przywrócić stan aplikacji do poprzedniej wersji należy wykonać komendę:
+```console
+kubectl rollout undo deployment [nazwa] --to-revision=1 --namespace development
+```
+### Gdzie ```[nazwa]``` to ```frontend``` lub ```backend``` w zależności od tego, którego deploya chcemy przywrócić.
 ---
 ### Dla tej przestrzeni postanowiłem utworzyć jedną replike dla Frontendu oraz dwie dla Backendu. Frontend nie potrzebuje więcej niż jedna replika do poprawnego działania. Dzięki dwóm replikom na Backendzie w razie awarii jednej z nich Backend nadal będzie działał. Rozłożenie ruchu na backendzie nie ma dużego znaczenia w przypadku wersji developerskiej.
 ---
