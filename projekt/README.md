@@ -79,7 +79,7 @@ kubectl rollout undo deployment [nazwa] --to-revision=1 --namespace development
 ---
 ### Production zawiera tylko jedną wersję (prod-1.0)
 ---
-### Dla tej przestrzeni postanowiłem utworzyć jedną replike dla Frontendu oraz cztery dla Backendu. Frontend nie potrzebuje więcej niż jedna replika do poprawnego działania. Dzięki czterem replikom na Backendzie w razie awarii jednej (lub paru) z nich Backend nadal będzie działał. Taka ilość replik pozwala także na rozłorzenie ruchu na Backendzie; powinno to przyspieszyć działanie aplikacji (jednak nie ma to zbytnio znaczenia w przypadku tak małej aplikacji).
+### Dla tej przestrzeni postanowiłem utworzyć jedną replike dla Frontendu oraz cztery dla Backendu. Frontend nie potrzebuje więcej niż jedna replika do poprawnego działania. Dzięki czterem replikom na Backendzie w razie awarii jednej (lub paru) z nich Backend nadal będzie działał. Taka ilość replik pozwala także na rozłożenie ruchu na Backendzie; powinno to przyspieszyć działanie aplikacji (jednak nie ma to zbytnio znaczenia w przypadku tak małej aplikacji).
 ---
 ---
 ## 3. Działanie aplikacji
