@@ -3,10 +3,18 @@
 ### [DockerHub Frontend](https://hub.docker.com/r/mpolom/frontend)
 ### [DockerHub Backend](https://hub.docker.com/r/mpolom/backend)
 ---
+## Aby utworzyć Namespace należy wykonać ten skrypt:
+```console
+./create.sh
+```
+## Aby usunąć Namespace należy wykonać ten skrypt:
+```console
+./delete.sh
+```
 ---
 ## 1. Namespace development
 ---
-### Aby uruchomić tą przestrzeń należy wykonać te komendy z wewnątrz katalogu ```kubectl-development```:
+### Aby uruchomić tą przestrzeń należy wykonać te komendy z wewnątrz katalogu ```kubectl-development``` (Wykonać w przypadku gdy skrypt ```./create.sh``` nie zadziałał):
 1. Utworzyć Namespace:
    ```console
    kubectl apply -f ./development-namespace.yaml
@@ -49,7 +57,7 @@ kubectl rollout undo deployment [nazwa] --to-revision=1 --namespace development
 ---
 ## 2. Namespace production
 ---
-### Aby uruchomić tą przestrzeń należy wykonać te komendy z wewnątrz katalogu ```kubectl-production```:
+### Aby uruchomić tą przestrzeń należy wykonać te komendy z wewnątrz katalogu ```kubectl-production``` (Wykonać w przypadku gdy skrypt ```./create.sh``` nie zadziałał):
 1. Utworzyć Namespace:
    ```console
    kubectl apply -f ./production-namespace.yaml
@@ -73,3 +81,35 @@ kubectl rollout undo deployment [nazwa] --to-revision=1 --namespace development
 ---
 ### Dla tej przestrzeni postanowiłem utworzyć jedną replike dla Frontendu oraz cztery dla Backendu. Frontend nie potrzebuje więcej niż jedna replika do poprawnego działania. Dzięki czterem replikom na Backendzie w razie awarii jednej (lub paru) z nich Backend nadal będzie działał. Taka ilość replik pozwala także na rozłorzenie ruchu na Backendzie; powinno to przyspieszyć działanie aplikacji (jednak nie ma to zbytnio znaczenia w przypadku tak małej aplikacji).
 ---
+---
+## 3. Działanie aplikacji
+---
+### Frontend posiada (w ostatniej wersji) 4 operacje które można wykonać (dodawanie, odejmowanie, mnożenie i dzielenie), wyświetlanie wyniku operacji, oraz historię operacji (można usuwać poszczególne rekordy z historii).
+---
+### Backend zawiera (w ostatniej wersji) 6 endpointów:
+* /add - dodaje dwie liczby i zwraca wynik,
+* /sub - odejmuje dwie liczby i zwraca wynik,
+* /mult - mnoży dwie liczby i zwraca wynik,
+* /div - dzieli dwie liczby i zwraca wynik,
+* /hist - zwraca historię operacji,
+* /delete - usuwa rekord z historii oraz pamięci cache.
+
+### Każda z operacji matematycznych na backendzie zapisywana jest do bazy Mongo oraz Redis. Dane w bazie Redis przechowywane są przez 60 sekund. Jeśli w tym czasie zostanie wysłane takie samo rządanie, to operacja nie zapisze się do bazy Mongo, a wynik zostanie pobrany z pamięci cache (bazy Redis).
+---
+---
+## 4. Changelog:
+---
+* 1.0:
+  * dodanie funkcji usuwania rekordów z historii.
+* 0.3:
+  * dodanie pola, które wyświeta wynik operacji.
+* 0.2:
+  * dodanie endpointa ```/mult```,
+  * dodanie endpointa ```/div```,
+  * dodanie na frontendzie pól do obliczania działań mnożenia i dzielenia.
+* 0.1:
+  * dodanie endpointa ```/add```,
+  * dodanie endpointa ```/sub```,
+  * dodanie endpointa ```/hist```,
+  * dodanie na frontendzie pól do obliczania działań dodawania i odejmowania,
+  * dodanie na frontendzie pola z historią operacji.
